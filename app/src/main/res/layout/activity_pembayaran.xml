@@ -68,19 +68,6 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="11dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginRight="16dp"
-            android:fontFamily="@font/poppins"
-            android:text="Change"
-            android:textColor="#00BFFF"
-            android:textSize="14dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
             android:id="@+id/textView4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -111,20 +98,6 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="48dp"
-        android:layout_marginRight="48dp"
-        android:fontFamily="@font/poppins"
-        android:text="Change"
-        android:textColor="#00BFFF"
-        android:textSize="14dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout2" />
-
-    <TextView
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -142,7 +115,7 @@
         android:id="@+id/constraintLayout4"
         android:layout_width="100dp"
         android:layout_height="72dp"
-        android:layout_marginStart="28dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="76dp"
         android:background="@drawable/pembayaran_radius"
         android:elevation="8dp"
@@ -150,15 +123,16 @@
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout2">
 
         <View
-            android:visibility="invisible"
             android:id="@+id/ovoselect"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@android:color/holo_green_light"
+            android:background="#94F4F1"
+            android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
         <ImageView
             android:id="@+id/ovo"
             android:layout_width="35dp"
@@ -189,7 +163,7 @@
             android:id="@+id/gopayselect"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@android:color/holo_green_light"
+            android:background="#94F4F1"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -225,7 +199,7 @@
             android:visibility="invisible"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@android:color/holo_green_light"
+            android:background="#94F4F1"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
