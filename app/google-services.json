@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "78346067689",
+    "project_id": "letu-fb355",
+    "storage_bucket": "letu-fb355.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:78346067689:android:1518cf9590ccc19b5a9a78",
+        "android_client_info": {
+          "package_name": "com.example.letu"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "78346067689-0gn58a5584a997ec9hh0jm61ctkga291.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.letu",
+            "certificate_hash": "2b4897be15ddb680c2c9080c139c0300c95fb90b"
+          }
+        },
+        {
+          "client_id": "78346067689-mg4rkkd116ev0m2ch85p5582c1n3nbop.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCBE3JX6DnWECuP_WLwdyytDXrTqZcI6es"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "78346067689-0ov59ebiqjm3kithl9556hp8e03nee8l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

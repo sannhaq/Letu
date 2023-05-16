@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Letu</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="pensil1">Pencil Castell adalah pensil hijau klasik yang selalu bisa diandalkan. Pensil pilihan seniman dunia yang memiliki pilihan 16 ketebalan yang berbeda, menjadikan karya seni yang indah.</string>
+    <string name="stabilio">Stabilo Joyko merupakan penanda berwarna berkualitas untuk melengkapi alat tulis di rumah, sekolah Anda. Penanda ini sangat berguna untuk menandai bagian yang penting dalam dokumen atau buku Anda.</string>
+    <string name="pensilwarna">Pensil warna biasanya terdiri dari batang kayu yang diisi dengan bahan pewarna dan tersedia dalam berbagai macam warna dan nuansa. Pensil warna dapat digunakan untuk menciptakan efek dan detail dalam gambar, serta mencampur warna untuk menghasilkan gradasi yang halus.</string>
+    <string name="penggaris">Penggaris adalah alat yang digunakan untuk mengukur dan menggambar garis lurus yang presisi pada kertas atau media lainnya. Penggaris biasanya terbuat dari bahan yang keras seperti plastik, logam, atau kayu, dan memiliki skala atau angka yang tercetak di atasnya untuk memudahkan pengukuran.</string>
+    <string name="tipex">Tipex atau corection fluid adalah cairan putih yang digunakan untuk menutupi atau menghapus kesalahan pada dokumen atau kertas. Tipex biasanya terdiri dari campuran zat seperti titanium dioksida, pigmen, dan pelarut organik.</string>
+    <string name="spidol">Spidol adalah alat tulis yang menggunakan tinta berbasis air atau tinta permanen untuk menulis atau membuat garis pada permukaan kertas atau media lainnya. Spidol tersedia dalam berbagai ukuran dan warna, dan dapat digunakan untuk menulis, membuat garis tebal atau tipis, menggambar.</string>
+    <string name="pensil2">Mechanical pencil atau pensil mekanik adalah pensil yang menggunakan mekanisme internal untuk memajukan ujung pensil saat digunakan, tanpa perlu meruncingkan ujung pensil secara manual. Pensil mekanik terdiri dari dua bagian utama, yaitu mekanisme internal dan batang pensil yang dapat diisi ulang.</string>
+    <string name="pulpen2">Memperkenalkan pen terbaru, Fast Gel Z, pen paling lembut yang pernah ada. Memberikan pengalaman menulis yang menyenangkan dengan teknologi tip terbaru dari tinta cepat kering sehingga tidak mengotori tangan dan dapat memberikan garis yang intens maupun halus.</string>
+    <string name="pulpen3">Ukuran pulpen yang pas dalam genggaman sangat penting. Apalagi jika Anda sering menggunakannya. Grip 2011 Finewriting menjawab kebutuhan tersebut. Desain yang trendy dengan panjang yang ideal, pulpen plastik berkualitas tinggi ini terasa ringan di tangan.</string>
+    <string name="buku">Buku tulis adalah sejenis buku yang terdiri dari kumpulan halaman kosong yang digunakan untuk menulis catatan, tugas, atau informasi lainnya. Buku tulis umumnya terdiri dari halaman yang dijilid dan dilengkapi dengan garis-garis atau kotak-kotak yang membantu pengguna dalam mengatur dan menulis informasi.</string>
+</resources>
