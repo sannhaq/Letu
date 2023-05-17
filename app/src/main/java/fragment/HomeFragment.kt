@@ -162,7 +162,7 @@ class HomeFragment : Fragment() {
             ))
         )
         childList.add(
-            Child("Q3OUqxCggmakATGxUAXK","Mechanical Pensil", "Rp 20.000", R.drawable.pensil2, "Pensil", "Faber-Castell", getString(
+            Child("xkxteh9egyqhU3uCYtIa","Mechanical Pensil", "Rp 20.000", R.drawable.pensil2, "Pensil", "Faber-Castell", getString(
                 R.string.pensil2
             ))
         )

@@ -41,11 +41,11 @@
         app:layout_constraintTop_toTopOf="@+id/textView3" />
 
     <TextView
-        android:id="@+id/merkproduct"
+        android:id="@+id/nameproduct"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:text="Faber Castell"
+        android:text="Pensil Graphite"
         android:textColor="@color/black"
         android:textSize="16dp"
         android:textStyle="bold"
@@ -66,7 +66,7 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.843"
-        app:layout_constraintStart_toEndOf="@+id/merkproduct"
+        app:layout_constraintStart_toEndOf="@+id/nameproduct"
         app:layout_constraintTop_toTopOf="@+id/textView3" />
 
     <ImageView
@@ -78,7 +78,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.108"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/merkproduct" />
+        app:layout_constraintTop_toBottomOf="@+id/nameproduct" />
 
     <TextView
         android:id="@+id/textView4"

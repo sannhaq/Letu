@@ -98,7 +98,7 @@ class SearchFragment : Fragment() {
             R.drawable.tipex1, "Tipex", "Kenko", getString(R.string.tipex)))
         productList.add(populer("niblAIAnS2RObwBOSU4P","White Board Marker", "Rp 9.000",
             R.drawable.spidol, "Spidol", "Faber-Castell", getString(R.string.spidol)))
-        productList.add(populer("Q3OUqxCggmakATGxUAXK","Mechanical Pensil", "Rp 20.000",
+        productList.add(populer("xkxteh9egyqhU3uCYtIa","Mechanical Pensil", "Rp 20.000",
             R.drawable.pensil2, "pensil", "Faber-Castell", getString(R.string.pensil2)))
         productList.add(populer("dPYKTDL56aAbwY8Do3Gi","Pensil Graphite", "Rp 50.000",
             R.drawable.pensil1, "pensil", "Faber-Castell", getString(R.string.pensil1)))

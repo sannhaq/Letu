@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import com.example.letu.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -18,6 +19,7 @@ import dataclass.populer
 class DetailActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     private lateinit var buy: Button
+    private var nameproduct = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,18 +37,20 @@ class DetailActivity : AppCompatActivity() {
         if (productMain !=null){
             val type : TextView = findViewById(R.id.typeproduct)
             val image : ImageView = findViewById(R.id.imageproduct)
-            val merk : TextView = findViewById(R.id.merkproduct)
+            val name : TextView = findViewById(R.id.nameproduct)
             val price : TextView = findViewById(R.id.priceproduct)
             val desc : TextView = findViewById(R.id.descproduct)
 
             type.text = productMain.productType
             image.setImageResource(productMain.productImage)
-            merk.text = productMain.productMerk
+            name.text = productMain.productName
             price.text = productMain.productPrice
             desc.text = productMain.productDesc
 
             buy.setOnClickListener{
+                nameproduct = productMain.productName.toString()
                 keranjangReference.update("produk", FieldValue.arrayUnion(productMain.id))
+                Toast.makeText(this,"$nameproduct Berhasil ditambahkan", Toast.LENGTH_SHORT).show()
             }
         }
 
@@ -54,17 +58,19 @@ class DetailActivity : AppCompatActivity() {
         if (productChild !=null){
             val type : TextView = findViewById(R.id.typeproduct)
             val image : ImageView = findViewById(R.id.imageproduct)
-            val merk : TextView = findViewById(R.id.merkproduct)
+            val name : TextView = findViewById(R.id.nameproduct)
             val price : TextView = findViewById(R.id.priceproduct)
             val desc : TextView = findViewById(R.id.descproduct)
 
             type.text = productChild.productType
             image.setImageResource(productChild.productImage)
-            merk.text = productChild.productMerk
+            name.text = productChild.productName
             price.text = productChild.productPrice
             desc.text = productChild.productDesc
             buy.setOnClickListener{
+                nameproduct = productChild.productName
                 keranjangReference.update("produk", FieldValue.arrayUnion(productChild.id))
+                Toast.makeText(this,"$nameproduct Berhasil ditambahkan", Toast.LENGTH_SHORT).show()
             }
         }
 
@@ -72,17 +78,19 @@ class DetailActivity : AppCompatActivity() {
         if (product !=null){
             val type : TextView = findViewById(R.id.typeproduct)
             val image : ImageView = findViewById(R.id.imageproduct)
-            val merk : TextView = findViewById(R.id.merkproduct)
+            val name : TextView = findViewById(R.id.nameproduct)
             val price : TextView = findViewById(R.id.priceproduct)
             val desc : TextView = findViewById(R.id.descproduct)
 
             type.text = product.productType
             image.setImageResource(product.productImage)
-            merk.text = product.productMerk
+            name.text = product.productName
             price.text = product.productPrice
             desc.text = product.productDesc
             buy.setOnClickListener{
+                nameproduct = product.productName
                 keranjangReference.update("produk", FieldValue.arrayUnion(product.id))
+                Toast.makeText(this,"$nameproduct Berhasil ditambahkan", Toast.LENGTH_SHORT).show()
             }
         }
     }

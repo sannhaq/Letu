@@ -8,21 +8,10 @@
     android:layout_height="match_parent"
     tools:context="activity.MainActivity">
 
-    <ImageView
-        android:id="@+id/backbutton"
-        android:layout_width="22dp"
-        android:layout_height="22dp"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="40dp"
-        android:src="@drawable/panahkembali"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <TextView
         android:id="@+id/tulisanprofil"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="80dp"
         android:layout_marginTop="40dp"
         android:fontFamily="@font/poppins_semibold"
         android:text="Profil"
@@ -30,8 +19,8 @@
         android:textSize="20dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.177"
-        app:layout_constraintStart_toEndOf="@+id/backbutton"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView

@@ -2,16 +2,19 @@ package activity
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.ImageButton
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.ConstraintSet.Constraint
 import com.example.letu.R
+import fragment.CartFragment
 
 class PembayaranActivity : AppCompatActivity() {
 
@@ -26,6 +29,17 @@ class PembayaranActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pembayaran)
+
+        // kembali ke cart fragment
+        val backButton: ImageView = findViewById(R.id.backbutton)
+        backButton.setOnClickListener {
+            // Memulai fragment CartFragment saat tombol kembali diklik
+            val cartFragment = CartFragment()
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.fragment_container, cartFragment)
+                .commit()
+            finish()
+        }
 
         // Ambil data total harga dari intent
         val totalHarga = intent.getIntExtra("TOTAL_HARGA", 0)
