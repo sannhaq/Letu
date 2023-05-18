@@ -3,6 +3,7 @@ package adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -11,14 +12,15 @@ import com.example.letu.R
 import dataclass.Main
 import fragment.CartFragment
 
-class CartAdapter(private val cartList: List<CartFragment.Produk>) : RecyclerView.Adapter<CartAdapter.CartViewHolder>(){
-
-    var onItemClick : ((CartFragment.Produk) -> Unit)? = null
+class CartAdapter(private val cartList: List<CartFragment.Produk>,
+                  private val onItemClick : ((CartFragment.Produk) -> Unit))
+    : RecyclerView.Adapter<CartAdapter.CartViewHolder>(){
 
     class CartViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
         val productImageView : ImageView = itemView.findViewById(R.id.gambar)
         val productmerkTv : TextView = itemView.findViewById(R.id.merk)
         val productpriceTv : TextView = itemView.findViewById(R.id.harga)
+        val del : ImageButton = itemView.findViewById(R.id.buttondel)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CartAdapter.CartViewHolder {
@@ -35,7 +37,7 @@ class CartAdapter(private val cartList: List<CartFragment.Produk>) : RecyclerVie
         holder.productmerkTv.text = product.nama
         holder.productpriceTv.text = product.harga.toString()
 
-        holder.itemView.setOnClickListener{
+        holder.del.setOnClickListener{
             onItemClick?.invoke(product)
         }
     }

@@ -171,10 +171,10 @@
 
         <ImageView
             android:id="@+id/gopay"
-            android:layout_width="110dp"
-            android:layout_height="110dp"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
             android:backgroundTint="@android:color/transparent"
-            android:src="@drawable/logo_gojek"
+            android:src="@drawable/gopay"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

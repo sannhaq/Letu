@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.letu.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 
@@ -43,18 +44,25 @@ class CartFragment : Fragment() {
         val priceTextView: TextView = view.findViewById(R.id.price)
 
         var totalHarga = 0 // inisialisasi variabel totalHarga dengan 0
-        init(view)
-
-        var buttonbuy: Button = view.findViewById(R.id.buttonbuy)
 
         auth = Firebase.auth
         db = FirebaseFirestore.getInstance()
-
         val docRef = db.collection("keranjang").document(auth.currentUser!!.uid)
+        recyclerView = view.findViewById(R.id.cartrecyclerview)
+        recyclerView.setHasFixedSize(true)
+        recyclerView.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
+        adapter = CartAdapter(produk) { produk ->
+            docRef.update("keranjang", FieldValue.arrayRemove(produk.id))
+            Log.d("Test", produk.id)
+        }
+        recyclerView.adapter = adapter
+
+        var buttonbuy: Button = view.findViewById(R.id.buttonbuy)
+
         docRef.get()
             .addOnSuccessListener { document ->
                 if (document != null) {
-                    for (produkId in document.data?.get("produk") as List<String>){
+                    for (produkId in document.data?.get("produk") as? List<String> ?: emptyList()) {
                         db.collection("produk").document(produkId).get().addOnSuccessListener {
                             if (it != null){
                                 Log.d("Test",it.data.toString())
@@ -95,11 +103,7 @@ class CartFragment : Fragment() {
     }
 
     private fun init(view: View) {
-        recyclerView = view.findViewById(R.id.cartrecyclerview)
-        recyclerView.setHasFixedSize(true)
-        recyclerView.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
-        adapter = CartAdapter(produk)
-        recyclerView.adapter = adapter
+
 
     }
 

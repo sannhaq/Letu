@@ -39,4 +39,10 @@
         <item name="colorAccent">#00BFFF</item>
         <item name="android:textColorSecondary">#00BFFF</item>
     </style>
+
+    <style name="TransparentDialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:backgroundDimEnabled">true</item>
+    </style>
+
 </resources>

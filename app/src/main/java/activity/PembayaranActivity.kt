@@ -5,16 +5,19 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.ConstraintSet.Constraint
 import com.example.letu.R
 import fragment.CartFragment
+import fragment.HomeFragment
 
 class PembayaranActivity : AppCompatActivity() {
 
@@ -50,7 +53,7 @@ class PembayaranActivity : AppCompatActivity() {
 
         //Tampilkan Total summry
         val totalSummary = findViewById<TextView>(R.id.summary)
-        var dev = (totalHarga + 2000).toInt()
+        var dev = (totalHarga + 2000)
         totalSummary.text = "Rp. $dev"
 
         context = this
@@ -65,7 +68,9 @@ class PembayaranActivity : AppCompatActivity() {
         var saldo = 500000
         var sisa = saldo - dev
 
-        toast4.setOnClickListener{ showToast("Metode pembayaran yang anda pilih " +metodepembayaran+ " sisa saldo anda $sisa")}
+        toast4.setOnClickListener{
+            showDialog()
+            showToast("Metode pembayaran yang anda pilih " +metodepembayaran+ " sisa saldo anda $sisa")}
 
 
         ovolayout.setOnClickListener{
@@ -84,6 +89,20 @@ class PembayaranActivity : AppCompatActivity() {
             dana.visibility = View.VISIBLE
         }
     }
+
+    private fun showDialog() {
+        val mDialog = AlertDialog.Builder(this, R.style.TransparentDialog)
+        val inflater = layoutInflater
+        val mDialogView = inflater.inflate(R.layout.payment_dialog,null)
+        mDialog.setView(mDialogView)
+        mDialog.show()
+        val back = mDialogView.findViewById<ConstraintLayout>(R.id.backContainerSuccses)
+        back.setOnClickListener{
+            val intent = Intent(this, HomeActivity::class.java)
+            startActivity(intent)
+        }
+    }
+
     fun showToast(message: String) {
         val toast = Toast.makeText(context, message , Toast.LENGTH_SHORT)
         toast.show()

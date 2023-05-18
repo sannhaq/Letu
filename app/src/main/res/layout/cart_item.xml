@@ -26,7 +26,16 @@
         android:layout_marginTop="20dp"
         android:textColor="@color/black"
         android:textStyle="bold"/>
-    
+
+    <ImageButton
+        android:id="@+id/buttondel"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/ic_baseline_delete"
+        android:layout_marginLeft="320dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/gray_200"/>
+
     <TextView
         android:id="@+id/harga"
         android:layout_width="wrap_content"
