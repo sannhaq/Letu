@@ -1,7 +1,7 @@
 package fragment
 
+import CartAdapter
 import activity.PembayaranActivity
-import adapter.CartAdapter
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -19,31 +19,32 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
+import kotlin.math.log
 
 class CartFragment : Fragment() {
 
     data class Produk(
-        val id:String,
-        val gambar:String,
-        val nama:String,
-        val harga:Int
+        val id: String,
+        val gambar: String,
+        val nama: String,
+        val harga: Int,
+        var qty: Int
     )
 
     private lateinit var auth: FirebaseAuth
     private lateinit var recyclerView: RecyclerView
     private lateinit var db: FirebaseFirestore
     private lateinit var adapter: CartAdapter
-    val produk = arrayListOf<Produk>()
+    private val produk = arrayListOf<Produk>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_cart, container, false)
         val priceTextView: TextView = view.findViewById(R.id.price)
 
-        var totalHarga = 0 // inisialisasi variabel totalHarga dengan 0
+        var totalHarga = 0
 
         auth = Firebase.auth
         db = FirebaseFirestore.getInstance()
@@ -51,37 +52,62 @@ class CartFragment : Fragment() {
         recyclerView = view.findViewById(R.id.cartrecyclerview)
         recyclerView.setHasFixedSize(true)
         recyclerView.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
-        adapter = CartAdapter(produk) { produk ->
-            docRef.update("keranjang", FieldValue.arrayRemove(produk.id))
-            Log.d("Test", produk.id)
-        }
+        adapter = CartAdapter(
+            produk,
+            onItemClick = { produk ->
+                Log.d("Test", produk.id)
+                docRef.update("produk", FieldValue.arrayRemove(produk.id))
+                    .addOnSuccessListener {
+                        produk.qty--
+                        totalHarga -= produk.harga
+                        priceTextView.text = "Rp. $totalHarga"
+                        adapter.notifyDataSetChanged()
+                    }
+                    .addOnFailureListener { exception ->
+                        Log.d("Delete", "Failed to delete product: ${exception.message}")
+                    }
+            },
+            onPlusClick = { produk ->
+                produk.qty++
+                totalHarga += produk.harga
+                priceTextView.text = "Rp. $totalHarga"
+                adapter.notifyDataSetChanged()
+            },
+            onMinusClick = { produk ->
+                if (produk.qty > 1) {
+                    produk.qty--
+                    totalHarga -= produk.harga
+                    priceTextView.text = "Rp. $totalHarga"
+                    adapter.notifyDataSetChanged()
+                }
+            }
+        )
         recyclerView.adapter = adapter
 
-        var buttonbuy: Button = view.findViewById(R.id.buttonbuy)
+        val buttonbuy: Button = view.findViewById(R.id.buttonbuy)
 
         docRef.get()
             .addOnSuccessListener { document ->
                 if (document != null) {
                     for (produkId in document.data?.get("produk") as? List<String> ?: emptyList()) {
-                        db.collection("produk").document(produkId).get().addOnSuccessListener {
-                            if (it != null){
-                                Log.d("Test",it.data.toString())
-                              produk.add(Produk(
-                                  it.id,
-                                  it.data!!.get("gambar").toString(),
-                                  it.data!!.get("nama").toString(),
-                                  it.data!!.get("harga").toString().toInt()
-                              ))
+                        db.collection("produk").document(produkId).get().addOnSuccessListener { it ->
+                            if (it != null) {
+                                produk.add(
+                                    Produk(
+                                        it.id,
+                                        it.data!!.get("gambar").toString(),
+                                        it.data!!.get("nama").toString(),
+                                        it.data!!.get("harga").toString().toInt(),
+                                        1 // Jumlah produk awal diatur menjadi 1
+                                    )
+                                )
                                 adapter.notifyDataSetChanged()
 
-                                // tambahkan harga produk ke variabel totalHarga
                                 totalHarga += it.data!!.get("harga").toString().toInt()
-                                // tampilkan total harga pada TextView "price"
                                 priceTextView.text = "Rp. $totalHarga"
                             }
                         }
                     }
-                    Log.d("Test",produk.toString())
                 } else {
                     Log.d("Test", "No such document")
                 }
@@ -89,22 +115,20 @@ class CartFragment : Fragment() {
             .addOnFailureListener { exception ->
                 Log.d("Test", "get failed with ", exception)
             }
-            buttonbuy.setOnClickListener {
-                val intent = Intent(requireContext(), PembayaranActivity::class.java)
-                intent.putExtra("TOTAL_HARGA", totalHarga)
-                startActivity(intent)
-            }
+
+        buttonbuy.setOnClickListener {
+            val intent = Intent(requireContext(), PembayaranActivity::class.java)
+            intent.putExtra("TOTAL_HARGA", totalHarga)
+            startActivity(intent)
+        }
+
         return view
     }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(true)
-    }
-
-    private fun init(view: View) {
-
-
     }
 
     companion object {

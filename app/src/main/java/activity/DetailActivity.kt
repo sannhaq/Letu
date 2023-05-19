@@ -32,6 +32,10 @@ class DetailActivity : AppCompatActivity() {
 
         val keranjangReference = db.collection("keranjang").document(auth.currentUser!!.uid)
 
+        val backButton: ImageView = findViewById(R.id.back)
+        backButton.setOnClickListener {
+            onBackPressed()
+        }
 
         val productMain = intent.getParcelableExtra<Main>("Mainproduct")
         if (productMain !=null){
